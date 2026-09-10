@@ -106,6 +106,12 @@
     }
     .screen-viewport{ border-radius:0; }
     .dynamic-island{ display:none; }
+    .status-bar{
+      height:calc(47px + env(safe-area-inset-top));
+      padding-top:env(safe-area-inset-top);
+      box-sizing:border-box;
+    }
+    .home-indicator{ bottom:calc(8px + env(safe-area-inset-bottom)); }
     .demo-controls{
       position:fixed; bottom:14px; left:0; right:0;
       justify-content:center; z-index:5000; margin-top:0;
@@ -124,7 +130,11 @@
     padding:0 24px; font-size:15px; font-weight:600; color:var(--label);
     position:relative; z-index:40;
   }
-  .status-bar .icons{ display:flex; align-items:center; gap:5px; }
+  .status-bar .icons{ display:flex; align-items:center; gap:6px; }
+  .status-bar .icons .status-icon{ display:block; color:currentColor; }
+  .status-bar .icons .status-icon.ic-cellular{ width:16.5px; height:11px; }
+  .status-bar .icons .status-icon.ic-wifi{ width:14.14px; height:11px; }
+  .status-bar .icons .status-icon.ic-battery{ width:22.92px; height:11px; }
 
   /* ---------- Screen shell ---------- */
   .screen{
@@ -517,13 +527,35 @@
 
 <div class="stage-caption">iCloud+ Gifting — Prototype (tap through the flow)</div>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-cellular" viewBox="0 0 18 12">
+      <rect x="0" y="7" width="3" height="5" rx="0.8" fill="currentColor"/>
+      <rect x="4.5" y="5" width="3" height="7" rx="0.8" fill="currentColor"/>
+      <rect x="9" y="3" width="3" height="9" rx="0.8" fill="currentColor"/>
+      <rect x="13.5" y="0" width="3" height="12" rx="0.8" fill="currentColor"/>
+    </symbol>
+    <symbol id="ic-wifi" viewBox="0 0 18 14">
+      <circle cx="9" cy="12" r="1.3" fill="currentColor"/>
+      <path d="M6.172 9.172A4 4 0 0111.828 9.172" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      <path d="M4.05 7.05A7 7 0 0113.95 7.05" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      <path d="M1.929 4.929A10 10 0 0116.071 4.929" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    </symbol>
+    <symbol id="ic-battery" viewBox="0 0 25 12">
+      <rect x="0.75" y="0.75" width="20.5" height="10.5" rx="2.65" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
+      <rect x="2.25" y="2.25" width="17.5" height="7.5" rx="1.5" fill="currentColor"/>
+      <rect x="21.75" y="4" width="1.5" height="4" rx="0.75" fill="currentColor" opacity="0.4"/>
+    </symbol>
+  </defs>
+</svg>
+
 <div class="bezel" id="bezel">
   <div class="screen-viewport" id="viewport">
     <div class="dynamic-island"></div>
 
     <!-- ============ SCREEN: Home Screen (root) ============ -->
     <section class="screen is-root" id="screen-home" style="background:linear-gradient(160deg,#5b86c9,#2a4a7f 45%,#0d1b33);">
-      <div class="status-bar" style="color:#fff;"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar" style="color:#fff;"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="home-grid">
         <div class="icon-tile"><div class="app-icon" data-icon="facetime"></div><div class="app-label">FaceTime</div></div>
         <div class="icon-tile"><div class="app-icon" data-icon="calendar"></div><div class="app-label">Calendar</div></div>
@@ -556,7 +588,7 @@
 
     <!-- ============ SCREEN: Settings ============ -->
     <section class="screen" id="screen-settings">
-      <div class="status-bar"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="screen-scroll">
         <div class="nav-bar">
           <div class="nav-row">
@@ -744,7 +776,7 @@
 
     <!-- ============ SCREEN: Apple ID ============ -->
     <section class="screen" id="screen-appleid">
-      <div class="status-bar"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="screen-scroll">
         <div class="nav-bar">
           <div class="nav-row">
@@ -828,7 +860,7 @@
 
     <!-- ============ SCREEN: iCloud ============ -->
     <section class="screen" id="screen-icloud">
-      <div class="status-bar"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="screen-scroll">
         <div class="nav-bar">
           <div class="nav-row">
@@ -904,7 +936,7 @@
 
     <!-- ============ SCREEN: Apple Account Suggestions ============ -->
     <section class="screen" id="screen-suggestions">
-      <div class="status-bar"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="screen-scroll">
         <div class="nav-bar">
           <div class="nav-row">
@@ -931,7 +963,7 @@
 
     <!-- ============ SCREEN: Recipients ============ -->
     <section class="screen" id="screen-recipients">
-      <div class="status-bar"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="screen-scroll">
         <div class="nav-bar">
           <div class="nav-row">
@@ -975,7 +1007,7 @@
 
     <!-- ============ SCREEN: Plan ============ -->
     <section class="screen" id="screen-plan">
-      <div class="status-bar"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="screen-scroll">
         <div class="nav-bar">
           <div class="nav-row">
@@ -1005,7 +1037,7 @@
 
     <!-- ============ SCREEN: Message ============ -->
     <section class="screen" id="screen-message">
-      <div class="status-bar"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="screen-scroll">
         <div class="nav-bar">
           <div class="nav-row">
@@ -1031,7 +1063,7 @@
 
     <!-- ============ SCREEN: Success ============ -->
     <section class="screen" id="screen-success">
-      <div class="status-bar"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="nav-bar" style="position:relative;"><div class="nav-row"><span></span><span></span>
         <button class="nav-action" onclick="resetTo('screen-icloud')">Done</button>
       </div></div>
@@ -1046,7 +1078,7 @@
 
     <!-- ============ SCREEN: Recipient — Lock Screen Notification ============ -->
     <section class="screen" id="screen-recipient-notify" style="background:linear-gradient(160deg,#3a2c6d,#12102a 65%);">
-      <div class="status-bar" style="color:#fff;"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar" style="color:#fff;"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="lock-clock">
         <div class="lock-time">9:41</div>
         <div class="lock-date">Tuesday, September 8</div>
@@ -1063,7 +1095,7 @@
 
     <!-- ============ SCREEN: Recipient — Accept ============ -->
     <section class="screen" id="screen-recipient-accept">
-      <div class="status-bar"><span>9:41</span><span class="icons">📶 📡 🔋</span></div>
+      <div class="status-bar"><span>9:41</span><span class="icons"><svg class="status-icon ic-cellular" viewBox="0 0 18 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-cellular"/></svg><svg class="status-icon ic-wifi" viewBox="0 0 18 14" preserveAspectRatio="xMidYMid meet"><use href="#ic-wifi"/></svg><svg class="status-icon ic-battery" viewBox="0 0 25 12" preserveAspectRatio="xMidYMid meet"><use href="#ic-battery"/></svg></span></div>
       <div class="screen-scroll" id="accept-body">
         <div class="nav-bar">
           <div class="nav-row">
